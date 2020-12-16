@@ -11,7 +11,7 @@ addopts = "-vvv"
 testpaths = ["tests"]
 
 [tool.poe.tasks]
-test = { shell = "python -m pytest" }
+test = "python -m pytest"
 
 [tool.poetry.dependencies]
 python = "^3.6"
