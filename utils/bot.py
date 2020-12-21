@@ -4,15 +4,29 @@ from typing import Optional
 import discord
 from discord.ext.commands.bot import BotBase
 from utils.context import Context
+from utils.settings import Settings
 
 
 class CustomBotBase(BotBase):
-    def __init__(self, cogs_path: Optional[str] = None, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(
+        self,
+        cogs_path: Optional[str] = None,
+        command_prefix: Optional[str] = None,
+        *args,
+        **kwargs,
+    ):
+        self.settings = Settings()
+        if command_prefix is None:
+            command_prefix = self.settings.prefix
+        super().__init__(command_prefix, *args, **kwargs)
         self.cogs_path = cogs_path
         if self.cogs_path is not None:
             self.cogs_path = Path(cogs_path)
             self._load_extensions()
+
+    @property
+    def token(self) -> str:
+        return self.settings.token
 
     def _load_extensions(self):
         for file in self.cogs_path.rglob("*.py"):
@@ -31,8 +45,14 @@ class CustomBotBase(BotBase):
 
 
 class Bot(CustomBotBase, discord.Client):
-    pass
+    def run(self, token: Optional[str] = None):
+        if token is not None:
+            super().run(token)
+        super().run(self.token)
 
 
 class AutoShardedBot(CustomBotBase, discord.AutoShardedClient):
-    pass
+    def run(self, token: Optional[str] = None):
+        if token is not None:
+            super().run(token)
+        super().run(self.token)
