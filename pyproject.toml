@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dpy-utils"
-version = "0.1.0"
+version = "0.0.0"
 description = ""
 authors = ["makubob <makupi@icloud.com>"]
 license = "GPLv3"
