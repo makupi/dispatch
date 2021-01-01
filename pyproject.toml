@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "dpy-utils"
 version = "0.0.0"
-description = ""
+description = "A discord.py utility library."
 authors = ["makubob <makupi@icloud.com>"]
 license = "GPLv3"
+packages = [{include = "utils"}]
+readme = "README.md"
+repository = "https://github.com/makupi/dpy-utils"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
