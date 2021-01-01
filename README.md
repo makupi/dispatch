@@ -8,8 +8,11 @@
 
 ## Features
 - custom Context with additional features like `ctx.ask`
-- patched `Bot` and `AutoShardedBot` classes that that use the custom Context
-- patched `Bot` automatically loads token and prefix from `.env` file
+- patched `Bot` and `AutoShardedBot` classes:
+  - use custom Context
+  - automatically loads token and prefix from `.env` file
+  - automatically loads cogs/extensions from `cogs/`  (can be modified through the `cogs_path` argument)
+      
 - `monkey_patch()` to overwrite `discord.py` classes with `dpy-utils`
 
 ## Installation
