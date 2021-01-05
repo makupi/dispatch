@@ -37,13 +37,11 @@ class EmbedPaginator:
         self,
         ctx: commands.Context,
         embeds: List[discord.Embed],
-        footer: str = "",
         timeout: int = 120,
         disable_footer: bool = False,
     ):
         self.embeds = embeds
         self.timeout = timeout
-        self._footer = footer
         self.disable_footer = disable_footer
         self.pos = 0
         self.emojis: List[str] = NavigationEmojis.values(size=len(self.embeds))
@@ -58,16 +56,21 @@ class EmbedPaginator:
 
     @property
     def footer(self):
-        f = f"page {self.pos+1}/{len(self.embeds)}"
-        if self._footer:
-            f = f"{self._footer} | {f}"
+        f = f"Page {self.pos+1}/{len(self.embeds)}"
+        embed = self._current_embed
+        if embed.footer:
+            f = f"{embed.footer.text} | {f}"
         return f
 
     @property
-    def current(self) -> discord.Embed:
+    def _current_embed(self) -> discord.Embed:
         if 0 > self.pos > len(self.embeds):
             self.pos = 0
-        embed = self.embeds[self.pos]
+        return self.embeds[self.pos]
+
+    @property
+    def current(self) -> discord.Embed:
+        embed = self._current_embed
         if not self.disable_footer:
             embed.set_footer(text=self.footer)
         return embed

@@ -19,9 +19,11 @@ async def ask(ctx: utils.Context):
 async def paginate(ctx: utils.Context, size: int = 5):
     embeds = list()
     for index in range(size):
-        embeds.append(discord.Embed(description=f"Embed #{index}\n\n\ntest embed"))
+        embed = discord.Embed(description=f"Embed #{index}\n\n\ntest embed")
+        embed.set_footer(text="Test Embed")
+        embeds.append(embed)
 
-    paginator = utils.Paginator(ctx, embeds)
+    paginator = utils.EmbedPaginator(ctx, embeds)
     await paginator.start()
 
 
