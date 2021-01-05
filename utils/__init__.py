@@ -5,6 +5,7 @@ from discord.ext import commands
 from utils.context import Context
 from utils.bot import Bot, AutoShardedBot
 from utils.settings import Settings
+from utils.paginator import EmbedPaginator
 
 
 logging.getLogger("utils").addHandler(logging.NullHandler())
