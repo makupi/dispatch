@@ -1,4 +1,4 @@
-# dispatch
+# dis.patch
 *A [discord.py](https://github.com/rapptz/discord.py) utility library.*
 
 
@@ -17,7 +17,7 @@
 
 ## Installation
 ```
-pip install dispatch
+pip install dis.patch
 ```
 
 

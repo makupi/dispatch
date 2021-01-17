@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "dispatch"
+name = "dis.patch"
 version = "0.2.0"
 description = "A discord.py utility library."
 authors = ["makubob <makupi@icloud.com>"]
