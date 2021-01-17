@@ -30,7 +30,7 @@ class CustomBotBase(BotBase):
 
     def _load_extensions(self):
         for file in self.cogs_path.rglob("*.py"):
-            ext = str(file)[:-3].replace("/", ".")
+            ext = file.as_posix[:-3].replace("/", ".")
             try:
                 self.load_extension(ext)
             except Exception as ex:

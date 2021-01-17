@@ -11,7 +11,7 @@
 - patched `Bot` and `AutoShardedBot` classes:
   - use custom Context
   - automatically loads token and prefix from `.env` file
-  - automatically loads cogs/extensions from `cogs/`  (can be modified through the `cogs_path` argument)
+  - automatically loads cogs/extensions if `cogs_path` is passed (e.g. `cogs_path="bot/cogs"`)
       
 - `monkey_patch()` to overwrite `discord.py` classes with `dispatch`
 
@@ -35,7 +35,7 @@ from discord.ext import commands
 
 dispatch.monkey_patch()
 
-bot: dispatch.Bot = commands.Bot()
+bot: dispatch.Bot = commands.Bot(cogs_path="bot/cogs")
 
 
 @bot.command()
