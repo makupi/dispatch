@@ -2,13 +2,13 @@ import logging
 
 from discord.ext import commands
 
-from utils.context import Context
-from utils.bot import Bot, AutoShardedBot
-from utils.settings import Settings
-from utils.paginator import EmbedPaginator
+from dispatch.context import Context
+from dispatch.bot import Bot, AutoShardedBot
+from dispatch.settings import Settings
+from dispatch.paginator import EmbedPaginator
 
 
-logging.getLogger("utils").addHandler(logging.NullHandler())
+logging.getLogger("dispatch").addHandler(logging.NullHandler())
 
 
 def monkey_patch():

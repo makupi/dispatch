@@ -3,8 +3,8 @@ from typing import Optional
 
 import discord
 from discord.ext.commands.bot import BotBase
-from utils.context import Context
-from utils.settings import Settings
+from dispatch.context import Context
+from dispatch.settings import Settings
 
 
 class CustomBotBase(BotBase):

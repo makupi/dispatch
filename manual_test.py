@@ -11,7 +11,7 @@ bot = commands.Bot()
 
 @bot.command()
 async def ask(ctx: dispatch.Context):
-    answer = await ctx.ask("Do you like dpy-utils?")
+    answer = await ctx.ask("Do you like dispatch?")
     print(answer)
 
 
