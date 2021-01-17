@@ -1,4 +1,4 @@
-from utils import monkey_patch, Context, AutoShardedBot, Bot
+from dispatch import monkey_patch, Context, AutoShardedBot, Bot
 from discord.ext import commands
 
 monkey_patch()

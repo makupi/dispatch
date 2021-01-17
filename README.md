@@ -1,4 +1,4 @@
-# dpy-utils
+# dispatch
 *A [discord.py](https://github.com/rapptz/discord.py) utility library.*
 
 
@@ -13,11 +13,11 @@
   - automatically loads token and prefix from `.env` file
   - automatically loads cogs/extensions from `cogs/`  (can be modified through the `cogs_path` argument)
       
-- `monkey_patch()` to overwrite `discord.py` classes with `dpy-utils`
+- `monkey_patch()` to overwrite `discord.py` classes with `dispatch`
 
 ## Installation
 ```
-pip install dpy-utils
+pip install dispatch
 ```
 
 
@@ -30,19 +30,17 @@ PREFIX=?
 
 *bot.py*
 ```py
-import os
-
-import utils
+import dispatch
 from discord.ext import commands
 
-utils.monkey_patch()
+dispatch.monkey_patch()
 
-bot: utils.Bot = commands.Bot()
+bot: dispatch.Bot = commands.Bot()
 
 
 @bot.command()
-async def test(ctx: utils.Context):
-    answer = await ctx.ask("Do you like dpy-utils?")
+async def test(ctx: dispatch.Context):
+    answer = await ctx.ask("Do you like dispatch?")
     print(answer)
 
 
@@ -57,7 +55,7 @@ bot.run()
 - [discord.py](https://github.com/rapptz/discord.py)
 
 ## Contributing and Issues
-If you want to contribute or want to suggest additional features please use [github issues](https://github.com/makupi/dpy-utils/issues).
+If you want to contribute or want to suggest additional features please use [github issues](https://github.com/makupi/dispatch/issues).
 
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A015HXK)
