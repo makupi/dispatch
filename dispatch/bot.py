@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Type
 
 import discord
 from discord.ext.commands.bot import BotBase
@@ -12,10 +12,11 @@ class CustomBotBase(BotBase):
         self,
         cogs_path: Optional[str] = None,
         command_prefix: Optional[str] = None,
+        settings: Type[Settings] = Settings,
         *args,
         **kwargs,
     ):
-        self.settings = Settings()
+        self.settings = settings()
         if command_prefix is None:
             command_prefix = self.settings.prefix
         super().__init__(command_prefix, *args, **kwargs)
