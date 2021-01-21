@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Type
+from typing import Optional, Type, Any
 
 import discord
 from discord.ext.commands.bot import BotBase
@@ -11,8 +11,11 @@ class CustomBotBase(BotBase):
     def __init__(
         self,
         cogs_path: Optional[str] = None,
-        command_prefix: Optional[str] = None,
+        command_prefix: Optional[Any] = None,
         settings: Type[Settings] = Settings,
+        theme_color: discord.Colour = discord.Colour.dark_teal(),
+        warning_color: discord.Colour = discord.Colour.gold(),
+        error_color: discord.Colour = discord.Colour.dark_red(),
         *args,
         **kwargs,
     ):
@@ -24,6 +27,9 @@ class CustomBotBase(BotBase):
         if self.cogs_path is not None:
             self.cogs_path = Path(cogs_path)
             self._load_extensions()
+        self.theme_color = theme_color
+        self.warning_color = warning_color
+        self.error_color = error_color
 
     @property
     def token(self) -> str:

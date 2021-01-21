@@ -7,8 +7,6 @@ from discord.ext import commands
 
 
 class Context(commands.Context):
-    DEFAULT_COLOR = discord.Colour.dark_teal()
-
     async def ask(
         self,
         question: str,
@@ -32,7 +30,7 @@ class Context(commands.Context):
         """
         if use_embed:
             if embed_color is None:
-                embed_color = self.DEFAULT_COLOR
+                embed_color = self.bot.theme_color
             embed = discord.Embed(description=question, colour=embed_color)
             question = await self.send(embed=embed)
         else:
